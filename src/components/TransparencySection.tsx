@@ -21,11 +21,11 @@ const TransparencySection = () => {
             Mọi khoản đóng góp của bạn đều được ghi nhận và công khai trên hệ thống của Cổng thông tin điện tử nhân đạo quốc gia.
           </p>
           <a 
-            href="#" 
+            href="https://thiennguyen.app/user/nhilefoundation" 
             target="_blank" 
             className="bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-full hover:bg-primary-dark transition-colors inline-block"
           >
-            Xem Sao Kê trên ThienNguyen.vn
+            Xem Sao Kê trên thiennguyen.app
           </a>
         </div>
       </div>

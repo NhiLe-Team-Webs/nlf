@@ -10,9 +10,14 @@ const CallToActionSection = () => {
           <button className="bg-primary text-primary-foreground font-bold py-4 px-10 rounded-full hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg w-full md:w-auto">
             Quyên Góp Ngay
           </button>
-          <button className="bg-slate-100 text-slate-800 font-bold py-4 px-10 rounded-full hover:bg-slate-200 transition-colors w-full md:w-auto">
+          <a
+            href="https://www.facebook.com/nlf.sg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-slate-100 text-slate-800 font-bold py-4 px-10 rounded-full hover:bg-slate-200 transition-colors w-full md:w-auto"
+          >
             Trở Thành Tình Nguyện Viên
-          </button>
+          </a>
         </div>
       </div>
     </section>

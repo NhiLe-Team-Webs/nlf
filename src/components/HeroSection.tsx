@@ -9,7 +9,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative py-24 md:py-40 bg-background text-center">
+    <section id="hero" className="relative h-screen flex items-center justify-center bg-background text-center">
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{ backgroundImage: `url(${heroImage})` }}
