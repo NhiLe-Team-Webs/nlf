@@ -7,9 +7,14 @@ const CallToActionSection = () => {
           Mỗi hành động của bạn đều có sức mạnh thay đổi một cuộc đời. Hãy chọn cách bạn muốn đồng hành cùng NhiLe Foundation.
         </p>
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-          <button className="bg-primary text-primary-foreground font-bold py-4 px-10 rounded-full hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg w-full md:w-auto">
+          <a
+            href="https://thiennguyen.app/user/nhilefoundation"
+            target="_blank"
+            rel="noopener noreferrer"
+           className="bg-primary text-primary-foreground font-bold py-4 px-10 rounded-full hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg w-full md:w-auto"
+           >
             Quyên Góp Ngay
-          </button>
+            </a>
           <a
             href="https://www.facebook.com/nlf.sg"
             target="_blank"
