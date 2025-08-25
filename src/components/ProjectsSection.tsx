@@ -1,24 +1,27 @@
-import booksImage from '@/assets/project-books.jpg';
-import mealsImage from '@/assets/project-meals.jpg';
-import clothingImage from '@/assets/project-clothing.jpg';
+import booksImage from '@/assets/project-1.jpg';
+import mealsImage from '@/assets/project-2.jpg';
+import clothingImage from '@/assets/project-3.jpg';
 import { ArrowRight } from 'lucide-react';
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Tủ Sách Vùng Cao",
-      description: "Mang tri thức đến cho các em nhỏ tại các điểm trường khó khăn, xây dựng tủ sách và trao tặng sách giáo khoa, truyện tranh.",
-      image: booksImage
-    },
-    {
-      title: "Bữa Cơm Có Thịt",
-      description: "Cải thiện bữa ăn dinh dưỡng hàng ngày cho các em tại các mái ấm, nhà mở, đảm bảo sự phát triển thể chất toàn diện.",
-      image: mealsImage
+      title: "Những hạnh phúc giản đơn",
+      description: "Là căn bếp có gạo, có đường, có mắm và muối. Là ngôi nhà có cả cha và mẹ. Là tiếng cười trẻ thơ được cắp sách tới trường. Đây đã gọi là sự HẠNH PHÚC của bà con vùng xa.",
+      image: booksImage,
+      link: "https://www.facebook.com/nlf.sg/posts/pfbid04LV34V3S3r6zny8pfkdN2s4VDpCGAyRC3vaJu5pPvBHJ5MXVq2SJAamLXH7xQJnyl"
     },
     {
       title: "Áo Ấm Mùa Đông",
       description: "Trao tặng áo ấm, chăn và các vật dụng cần thiết cho trẻ em các tỉnh miền núi phía Bắc trước mỗi mùa đông giá rét.",
-      image: clothingImage
+      image: clothingImage,
+      link: "#"
+    },
+        {
+      title: "Hành trình xoa dịu nỗi đau da cam",
+      description: "Dự án hướng đến việc sẻ chia, xoa dịu nỗi đau và đồng hành cùng các nạn nhân chất độc da cam, mang đến niềm tin và hy vọng vào một tương lai tốt đẹp hơn",
+      image: mealsImage,
+      link: "#"
     }
   ];
 
@@ -45,10 +48,12 @@ const ProjectsSection = () => {
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-2">{project.title}</h3>
                 <p className="text-slate-600 mb-4">{project.description}</p>
-                <button className="font-semibold text-primary hover:text-primary-dark flex items-center gap-2 group">
-                  Xem chi tiết 
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <button className="font-semibold text-primary hover:text-primary-dark flex items-center gap-2 group">
+                    Xem chi tiết 
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </a>
               </div>
             </div>
           ))}
