@@ -29,7 +29,7 @@ const StatsSection = () => {
 
     // Start animations with delay
     setTimeout(() => {
-      animateNumber(602233144, (value) => setStats(prev => ({ ...prev, donated: value })));
+      animateNumber(977372893, (value) => setStats(prev => ({ ...prev, donated: value })));
       animateNumber(15, (value) => setStats(prev => ({ ...prev, projects: value })));
     }, 500);
   }, []);
@@ -47,7 +47,7 @@ const StatsSection = () => {
             <p className="text-4xl md:text-5xl font-bold text-primary">
               {formatNumber(stats.donated)}
             </p>
-            <p className="text-slate-600 mt-2">VNĐ Đã Quyên Góp</p>
+            <p className="text-slate-600 mt-2">VNĐ Đã VẬN ĐỘNG ĐƯỢC</p>
           </div>
           <div>
             <p className="text-4xl md:text-5xl font-bold text-primary">
