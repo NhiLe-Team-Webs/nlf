@@ -47,7 +47,7 @@ const StatsSection = () => {
             <p className="text-4xl md:text-5xl font-bold text-primary">
               {formatNumber(stats.donated)}
             </p>
-            <p className="text-slate-600 mt-2">VNĐ Đã VẬN ĐỘNG ĐƯỢC</p>
+            <p className="text-slate-600 mt-2">VNĐ Đã QUYÊN GÓP</p>
           </div>
           <div>
             <p className="text-4xl md:text-5xl font-bold text-primary">
