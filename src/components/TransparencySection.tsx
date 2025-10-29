@@ -1,31 +1,36 @@
-import { Shield } from 'lucide-react';
+import { Shield } from "lucide-react";
+
+import { useTranslations } from "@/contexts/language-context";
 
 const TransparencySection = () => {
+  const { transparency } = useTranslations();
+
   return (
-    <section id="transparency" className="py-20 md:py-28 bg-background">
+    <section id="transparency" className="bg-background py-20 md:py-28">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Minh Bạch Là Nền Tảng Của Niềm Tin
+        <div className="mb-16 text-center">
+          <h2 className="mb-3 text-3xl font-bold md:text-4xl">
+            {transparency.heading}
           </h2>
-          <p className="text-slate-600 max-w-3xl mx-auto">
-            Chúng tôi cam kết công khai mọi hoạt động thu chi. Toàn bộ sao kê và báo cáo tài chính đều được cập nhật và xác thực qua Cổng thông tin điện tử nhân đạo quốc gia.
+          <p className="mx-auto max-w-3xl text-slate-600">
+            {transparency.description}
           </p>
         </div>
-        <div className="max-w-2xl mx-auto bg-accent border-2 border-primary rounded-2xl p-8 text-center shadow-lg">
-          <div className="flex justify-center mb-4">
+        <div className="mx-auto max-w-2xl rounded-2xl border-2 border-primary bg-accent p-8 text-center shadow-lg">
+          <div className="mb-4 flex justify-center">
             <Shield className="h-16 w-16 text-primary" />
           </div>
-          <h3 className="text-xl font-bold mb-2">Sao Kê Minh Bạch</h3>
-          <p className="text-slate-600 mb-6">
-            Mọi khoản đóng góp của bạn đều được ghi nhận và công khai trên hệ thống của Cổng thông tin điện tử nhân đạo quốc gia.
+          <h3 className="mb-2 text-xl font-bold">{transparency.badgeTitle}</h3>
+          <p className="mb-6 text-slate-600">
+            {transparency.badgeDescription}
           </p>
-          <a 
-            href="https://thiennguyen.app/user/nhilefoundation" 
-            target="_blank" 
-            className="bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-full hover:bg-primary-dark transition-colors inline-block"
+          <a
+            href="https://thiennguyen.app/user/nhilefoundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary-dark"
           >
-            Xem Sao Kê trên thiennguyen.app
+            {transparency.badgeCta}
           </a>
         </div>
       </div>

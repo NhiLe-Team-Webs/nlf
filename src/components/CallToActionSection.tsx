@@ -1,27 +1,33 @@
+import { useTranslations } from "@/contexts/language-context";
+
 const CallToActionSection = () => {
+  const { callToAction } = useTranslations();
+
   return (
-    <section id="join-us" className="py-20 md:py-28 bg-background">
+    <section id="join-us" className="bg-background py-20 md:py-28">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Chung Tay Cùng Chúng Tôi</h2>
-        <p className="text-slate-600 max-w-2xl mx-auto mb-8">
-          Mỗi hành động của bạn đều có sức mạnh thay đổi một cuộc đời. Hãy chọn cách bạn muốn đồng hành cùng NhiLe Foundation.
+        <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          {callToAction.heading}
+        </h2>
+        <p className="mx-auto mb-8 max-w-2xl text-slate-600">
+          {callToAction.description}
         </p>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-6 md:flex-row">
           <a
             href="https://thiennguyen.app/user/nhilefoundation"
             target="_blank"
             rel="noopener noreferrer"
-           className="bg-primary text-primary-foreground font-bold py-4 px-10 rounded-full hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg w-full md:w-auto"
-           >
-            Quyên Góp Ngay
-            </a>
+            className="w-full rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground shadow-lg transition-all hover:scale-105 hover:bg-primary-dark md:w-auto"
+          >
+            {callToAction.donate}
+          </a>
           <a
             href="https://www.facebook.com/nlf.sg"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-slate-100 text-slate-800 font-bold py-4 px-10 rounded-full hover:bg-slate-200 transition-colors w-full md:w-auto"
+            className="w-full rounded-full bg-slate-100 px-10 py-4 font-bold text-slate-800 transition-colors hover:bg-slate-200 md:w-auto"
           >
-            Trở Thành Tình Nguyện Viên
+            {callToAction.volunteer}
           </a>
         </div>
       </div>
