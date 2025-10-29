@@ -12,13 +12,14 @@ const LanguageToggle = ({ className }: LanguageToggleProps) => {
   return (
     <div
       className={cn(
-        "flex items-center gap-2 rounded-full border border-slate-800/50 bg-slate-900/90 px-3 py-1.5 text-slate-200 shadow-inner shadow-black/20",
+        "flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 text-sm text-slate-600 shadow-sm",
+        "transition-colors duration-200",
         className,
       )}
       aria-label="Language selection"
     >
-      <Globe className="h-4 w-4 text-slate-300" aria-hidden="true" />
-      <div className="flex items-center gap-1.5">
+      <Globe className="h-4 w-4 text-primary" aria-hidden="true" />
+      <div className="flex items-center gap-1">
         {LANGUAGE_OPTIONS.map((option) => {
           const isActive = option.code === language;
           return (
@@ -28,10 +29,10 @@ const LanguageToggle = ({ className }: LanguageToggleProps) => {
               onClick={() => setLanguage(option.code)}
               aria-pressed={isActive}
               className={cn(
-                "rounded-full px-3 py-1 text-sm font-medium transition-all",
+                "rounded-full px-3 py-1 font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2",
                 isActive
-                  ? "bg-background text-slate-900 shadow-sm"
-                  : "text-slate-300 hover:text-white",
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-slate-600 hover:text-primary",
               )}
             >
               {option.shortLabel}
