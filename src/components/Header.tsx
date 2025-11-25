@@ -4,7 +4,7 @@ import { useTranslations } from "@/contexts/language-context";
 import LanguageToggle from "@/components/LanguageToggle";
 import { Menu, X } from "lucide-react";
 
-const SECTION_IDS = ["about", "projects", "transparency"] as const;
+const SECTION_IDS = ["about", "projects", "transparency", "contact"] as const;
 
 const Header = () => {
   const { nav } = useTranslations();
@@ -16,8 +16,9 @@ const Header = () => {
       { id: "about", label: nav.about },
       { id: "projects", label: nav.projects },
       { id: "transparency", label: nav.transparency },
+      { id: "contact", label: nav.contact },
     ],
-    [nav.about, nav.projects, nav.transparency],
+    [nav.about, nav.projects, nav.transparency, nav.contact],
   );
 
   useEffect(() => {

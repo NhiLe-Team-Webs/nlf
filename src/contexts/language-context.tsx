@@ -28,6 +28,7 @@ const translations = {
       projects: "D\u1ef1 \u00c1n",
       transparency: "Minh B\u1ea1ch",
       holdings: "V\u1ec1 NhiLe Holding",
+      contact: "Li\u00ean H\u1ec7",
     },
     hero: {
       title:
@@ -124,6 +125,18 @@ const translations = {
         "M\u1ecdi kho\u1ea3n \u0111\u00f3ng g\u00f3p c\u1ee7a b\u1ea1n \u0111\u1ec1u \u0111\u01b0\u1ee3c ghi nh\u1eadn v\u00e0 c\u00f4ng khai tr\u00ean h\u1ec7 th\u1ed1ng c\u1ee7a C\u1ed5ng th\u00f4ng tin \u0111i\u1ec7n t\u1eed nh\u00e2n \u0111\u1ea1o qu\u1ed1c gia.",
       badgeCta: "Xem Sao K\u00ea tr\u00ean thiennguyen.app",
     },
+    contact: {
+      title: "Li\u00ean H\u1ec7",
+      subtitle: "H\u00e3y k\u1ebft n\u1ed1i v\u1edbi ch\u00fang t\u00f4i \u0111\u1ec3 c\u00f9ng nhau lan t\u1ecfa y\u00eau th\u01b0\u01a1ng",
+      email: "Email",
+      address: "\u0110\u1ecba \u0111i\u1ec3m",
+      mapTitle: "B\u1ea3n \u0111\u1ed3",
+      getInTouch: "Li\u00ean h\u1ec7 v\u1edbi ch\u00fang t\u00f4i",
+      sendMessage: "G\u1eedi tin nh\u1eafn",
+      name: "H\u1ecd v\u00e0 t\u00ean",
+      message: "Tin nh\u1eafn",
+      send: "G\u1eedi",
+    },
     footer: {
       tagline: "Tr\u00e1i tim c\u1ee7a h\u1ec7 sinh th\u00e1i NhiLe Holding.",
       copyright: "\u00a9 2024 NhiLe Foundation. Gi\u1eef m\u1ecdi quy\u1ec1n.",
@@ -132,13 +145,14 @@ const translations = {
   en: {
     languageToggle: {
       english: "English",
-      vietnamese: "Vietnamese",
+      vietnamese: "Tiếng Việt",
     },
     nav: {
       about: "About Us",
       projects: "Projects",
       transparency: "Transparency",
       holdings: "About NhiLe Holding",
+      contact: "Contact",
     },
     hero: {
       title: "Spreading Love, Empowering Futures",
@@ -231,6 +245,18 @@ const translations = {
         "Every contribution you make is recorded and published on the National Humanitarian Information Portal.",
       badgeCta: "View ledger on thiennguyen.app",
     },
+    contact: {
+      title: "Contact",
+      subtitle: "Connect with us to spread love together",
+      email: "Email",
+      address: "Address",
+      mapTitle: "Map",
+      getInTouch: "Get in Touch",
+      sendMessage: "Send Message",
+      name: "Name",
+      message: "Message",
+      send: "Send",
+    },
     footer: {
       tagline: "The heart of the NhiLe Holding ecosystem.",
       copyright: "\u00a9 2024 NhiLe Foundation. All rights reserved.",
@@ -238,7 +264,7 @@ const translations = {
   },
 } as const;
 
-type TranslationShape = typeof translations.vi;
+type TranslationShape = typeof translations.vi | typeof translations.en;
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(
   undefined,
