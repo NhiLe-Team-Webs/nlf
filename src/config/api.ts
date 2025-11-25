@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_BASE_URL);
+const API_BASE_URL = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_BASE_URL || '/api');
 
 export const API_ENDPOINTS = {
   BANK_TRANSACTIONS: (bankAccountId: string, params: {
