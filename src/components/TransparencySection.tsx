@@ -39,6 +39,11 @@ const TransparencySection = () => {
   const [hasNextPage, setHasNextPage] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [accountInfo, setAccountInfo] = useState({
+    accountNumber: '',
+    accountName: '',
+    bankName: 'MB Bank'
+  });
 
   // Calculate balance if API returns null
   const calculatedBalance = accountBalance !== null ? accountBalance : (totalCredit - totalDebit);
@@ -90,6 +95,13 @@ const TransparencySection = () => {
         setHasNextPage(data.data.hasNextPage);
         setCurrentPage(data.data.pageNumber);
         
+        // Update account information
+        setAccountInfo({
+          accountNumber: data.data.accountNumber,
+          accountName: data.data.accountName,
+          bankName: 'MB Bank' // Default bank name, can be updated if available in API
+        });
+        
         // Calculate total pages based on hasNextPage
         if (data.data.hasNextPage) {
           setTotalPages(data.data.pageNumber + 1);
@@ -124,6 +136,11 @@ const TransparencySection = () => {
       setHasNextPage(false);
       setCurrentPage(1);
       setTotalPages(1);
+      setAccountInfo({
+        accountNumber: '',
+        accountName: '',
+        bankName: 'MB Bank'
+      });
     } finally {
       setLoading(false);
     }
@@ -260,8 +277,16 @@ const TransparencySection = () => {
               <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {BANK_ACCOUNT_ID}
+              <div className="space-y-1">
+                <div className="text-lg font-bold">
+                  {accountInfo.accountNumber || BANK_ACCOUNT_ID}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {accountInfo.accountName}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {accountInfo.bankName}
+                </div>
               </div>
             </CardContent>
           </Card>
