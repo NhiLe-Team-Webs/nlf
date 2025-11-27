@@ -1,73 +1,135 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import { useLanguage, useTranslations } from "@/contexts/language-context";
+import { API_ENDPOINTS, BANK_ACCOUNT_ID } from "@/config/api";
+import { TransactionResponse } from "@/types/transaction";
 
 const StatsSection = () => {
-  const [stats, setStats] = useState({
+  const { stats } = useTranslations();
+  const { language } = useLanguage();
+  const [animatedValues, setAnimatedValues] = useState({
     donated: 0,
     projects: 0,
   });
+  const [totalCredit, setTotalCredit] = useState(0);
+  const [totalDebit, setTotalDebit] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const fetchStats = async () => {
+    setLoading(true);
+    try {
+      const filters = {
+        fromDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split('T')[0], // 1 year ago
+        toDate: new Date().toISOString().split('T')[0], // today
+        keyword: '',
+        pageNumber: 1,
+        pageSize: 1, // We only need totals, not actual transactions
+      };
+      
+      const url = API_ENDPOINTS.BANK_TRANSACTIONS(BANK_ACCOUNT_ID, filters);
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch stats');
+      }
+      
+      const data: TransactionResponse = await response.json();
+      
+      if (data.status === 200) {
+        setTotalCredit(data.data.totalCredit);
+        setTotalDebit(data.data.totalDebit);
+      }
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
 
   useEffect(() => {
     const animateNumber = (
-      target: number, 
-      setter: (value: number) => void, 
-      duration: number = 2500
+      target: number,
+      setter: (value: number) => void,
+      duration = 2500,
     ) => {
-      let start = 0;
+      let current = 0;
       const increment = target / (duration / 16);
-      
+
       const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
+        current += increment;
+        if (current >= target) {
           setter(target);
           clearInterval(timer);
         } else {
-          setter(Math.floor(start));
+          setter(Math.floor(current));
         }
       }, 16);
     };
 
-    // Start animations with delay
-    setTimeout(() => {
-      animateNumber(977372893, (value) => setStats(prev => ({ ...prev, donated: value })));
-      animateNumber(15, (value) => setStats(prev => ({ ...prev, projects: value })));
-    }, 500);
-  }, []);
+    const timeout = setTimeout(() => {
+      animateNumber(totalDebit, (value) =>
+        setAnimatedValues((prev) => ({ ...prev, donated: value })),
+      );
+      animateNumber(15, (value) =>
+        setAnimatedValues((prev) => ({ ...prev, projects: value })),
+      );
+    }, 400);
 
-  const formatNumber = (num: number) => {
-    return num.toLocaleString('vi-VN');
+    return () => clearTimeout(timeout);
+  }, [totalDebit]);
+
+  const formatNumber = (value: number) =>
+    value.toLocaleString(language === "vi" ? "vi-VN" : "en-US");
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(amount);
   };
 
   return (
-    <section className="py-16 bg-slate-100">
+    <section className="bg-slate-100 py-16">
       <div className="container mx-auto px-6">
-        {/* Statistics Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mb-12">
+        <div className="mb-12 grid grid-cols-1 gap-8 text-center md:grid-cols-2">
           <div>
-            <p className="text-4xl md:text-5xl font-bold text-primary">
-              {formatNumber(stats.donated)}
+            <p className="text-4xl font-bold text-primary md:text-5xl">
+              {formatNumber(animatedValues.donated)}
             </p>
-            <p className="text-slate-600 mt-2">VNĐ Đã QUYÊN GÓP</p>
+            <p className="mt-2 text-slate-600">{stats.raisedLabel}</p>
+            {loading && (
+              <div className="mt-2 text-sm text-gray-500">
+                {language === 'vi' ? 'Đang cập nhật...' : 'Updating...'}
+              </div>
+            )}
           </div>
           <div>
-            <p className="text-4xl md:text-5xl font-bold text-primary">
-              {stats.projects}+
+            <p className="text-4xl font-bold text-primary md:text-5xl">
+              15+
             </p>
-            <p className="text-slate-600 mt-2">Dự Án Hoàn Thành</p>
+            <p className="mt-2 text-slate-600">{language === 'vi' ? 'Dự án' : 'Projects'}</p>
           </div>
         </div>
 
-        {/* Current Project Section */}
-        <div className="text-center border-t border-slate-300 pt-8">
-          <h3 className="text-xl font-bold text-slate-800 mb-2">
-            Dự Án Hiện Tại
+        <div className="border-t border-slate-300 pt-8 text-center">
+          <h3 className="mb-2 text-xl font-bold text-slate-800">
+            {stats.currentHeading}
           </h3>
-          <p className="text-lg italic text-slate-700 mb-4">
-            Quỹ hỗ trợ NSA Kid - Quản lý bởi NhiLe Foundation & NSA
+          <p className="mb-4 text-lg italic text-slate-700">
+            {stats.currentDescription}
           </p>
-          <a href="https://thiennguyen.app/donate-target/1958011484311146496" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://thiennguyen.app/donate-target/1958011484311146496"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button className="bg-primary hover:bg-primary/90">
-              Xem chi tiết & Ủng hộ
+              {stats.cta}
             </Button>
           </a>
         </div>

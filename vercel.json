@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://apiv2.thiennguyen.app/api/$1"
+    }
+  ]
+}
