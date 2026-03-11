@@ -49,7 +49,7 @@ const ContactSection = () => {
                     {contact.address}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">
-                    72 Nại Nam, Hoà Cường Bắc, Hải Châu, Đà Nẵng 50000, Vietnam
+                    74 Nại Nam, Hoà Cường Bắc, Hải Châu, Đà Nẵng 50000, Vietnam
                   </p>
                 </div>
               </div>
