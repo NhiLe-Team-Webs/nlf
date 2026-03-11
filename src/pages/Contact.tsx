@@ -91,7 +91,7 @@ const Contact = () => {
             </h2>
             <div className="overflow-hidden rounded-lg shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.588331632411!2d108.22863187459937!3d16.034931540356233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219e6a827a5a1%3A0x58bae07542c041c6!2zNzIgTuG6oWkgTmFtLCBIb8OgIEPGsOG7nW5nIELhuq9jLCBI4bqjaSBDaMOidSwgxJDDoCBO4bq1bmcgNTAwMDAsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1764062200982!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d958.647793830091!2d108.2308645!3d16.0347837!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421900763de849%3A0x25c32cf9cf2d5755!2sNhiLe%20Holding!5e0!3m2!1sen!2s!4v1773214197779!5m2!1sen!2s"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
